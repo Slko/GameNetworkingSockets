@@ -274,6 +274,8 @@ macro(gamenetworkingsockets_common GNS_TARGET)
 		if(USE_CRYPTO STREQUAL "BCrypt")
 			target_link_libraries(${GNS_TARGET} PUBLIC bcrypt)
 		endif()
+    elseif(CMAKE_SYSTEM_NAME MATCHES Android)
+
 	else()
 		message(FATAL_ERROR "Could not identify your target operating system")
 	endif()

@@ -39,6 +39,8 @@ bool Plat_IsInDebugSession()
 {
 #ifdef _WIN32
 	return (IsDebuggerPresent() != 0);
+#elif __ANDROID__
+    return false;
 #elif defined(OSX)
 	int mib[4];
 	struct kinfo_proc info;

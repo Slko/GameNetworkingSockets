@@ -197,6 +197,13 @@ function(set_target_common_gns_properties TGT)
 				)
 			target_compile_options(${TGT} PRIVATE -fno-stack-protector)
 		endif()
+    elseif(CMAKE_SYSTEM_NAME MATCHES Android)
+        target_compile_definitions(${TGT} PUBLIC POSIX ANDROID)
+        find_library (android-log-lib log)
+        target_link_libraries(${TGT} PRIVATE
+            ${android-log-lib}
+        )
+        set(CMAKE_ANDROID_STL_TYPE "c++_shared")
 	else()
 		message(FATAL_ERROR "Could not identify your target operating system")
 	endif()

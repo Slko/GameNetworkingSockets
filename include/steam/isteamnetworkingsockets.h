@@ -917,6 +917,9 @@ struct SteamNetConnectionStatusChangedCallback_t
 	/// Connection handle
 	HSteamNetConnection m_hConn;
 
+	// For compatibility with ValveSockets-CSharp on Linux
+	uint32 m__pad1;
+
 	/// Full connection info
 	SteamNetConnectionInfo_t m_info;
 
